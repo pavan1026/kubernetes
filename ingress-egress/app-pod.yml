@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app-pod
+  labels:
+    app: app-pod
+  namespace: development
+spec:
+  containers:
+    - name: nginx-app
+      image: nginx
+      ports:
+       -  containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+  namespace: development
+spec:
+   type: NodePort
+   selector:
+     app: app-pod
+   ports:
+     - protocol: TCP
+       port: 80
+       nodePort: 32146

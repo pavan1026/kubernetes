@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: grapes-app
+  namespace: rajeevns 
+  labels:     
+    app: grapes
+    # project: myproject
+spec: 
+   containers:
+   - name: grapes-app
+     image: hashicorp/http-echo
+     args:
+          - "-text=grapes"
